@@ -1,8 +1,4 @@
 from django.conf.urls.defaults import *
-from django.views.generic import DetailView, ListView
-from store.models import Cliente
-from productos.models import Producto
-
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
