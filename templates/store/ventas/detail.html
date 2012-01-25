@@ -4,6 +4,7 @@
 	<input type="submit" value="Guardar">
 </form>
 
+<h2>Productos en esta venta:</h2>
 {% if latest_list %}
 	<ul>
 		{% for object in latest_list %}
@@ -13,3 +14,6 @@
 {% else %}
 	<p>No hay {{request.path}} en la base de datos.</p>
 {% endif %}
+
+<input  type="button" value="Agregar" onclick="location.href='{{request.path}}details/create'">
+
