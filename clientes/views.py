@@ -2,10 +2,10 @@ from clientes.models import Cliente, ClienteForm
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 
-def detail(request, id = None):
+def update(request, id_cliente = None):
 	instance = None
-	if id is not None:
-		instance = Cliente.objects.get(id = id)
+	if id_cliente is not None:
+		instance = Cliente.objects.get(id = id_cliente)
 	#when POST
 	if request.method == 'POST':
 		form = ClienteForm(request.POST, instance = instance)

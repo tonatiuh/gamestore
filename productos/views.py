@@ -2,7 +2,7 @@ from productos.models import Producto, ProductoForm
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 
-def detail(request, id = None):
+def update(request, id = None):
 	instance = None
 	if id is not None:
 		instance = Producto.objects.get(id = id)

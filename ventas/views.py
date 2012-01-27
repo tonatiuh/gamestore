@@ -17,7 +17,7 @@ def create(request):
 def update(request, id_venta = None):
 	venta = None
 	latest_list = False
-	if id is not None:
+	if id_venta is not None:
 		venta = Venta.objects.get(id = id_venta)
 		latest_list = VentaDetail.objects.filter(venta = id_venta)
 	#when POST

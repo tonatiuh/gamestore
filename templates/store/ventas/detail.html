@@ -8,7 +8,7 @@
 {% if latest_list %}
 	<ul>
 		{% for object in latest_list %}
-			<li><a href="{{request.path}}details/update/{{object.id}}">({{object.cantidad}}) {{object.producto}}</a></li>
+			<li><a href="{{request.path}}details/update/{{object.id}}">{{object}}</a></li>
 		{% endfor %}
 	</ul>
 {% else %}

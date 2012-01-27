@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from django.views.generic import DetailView, ListView
+from django.views.generic import ListView
 from ventas.models import Venta
 
 urlpatterns = patterns('',
