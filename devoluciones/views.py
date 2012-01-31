@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 def ventas_read(request, id_venta):
 	latest_list = VentaDetail.objects.filter(venta = id_venta)
-	return render_to_response('store/devoluciones/detail.html',{'latest_list':latest_list}, context_instance=RequestContext(request))
+	return render_to_response('devoluciones/detail.html',{'latest_list':latest_list}, context_instance=RequestContext(request))
 
 def create(request, id_venta, id_ventadetail):
 	#when POST
@@ -28,11 +28,11 @@ def create(request, id_venta, id_ventadetail):
 			return HttpResponseRedirect('/devoluciones/update/'+str(devolucion[0].id))
 		else:
 			form = DevolucionForm()
-	return render_to_response('store/devoluciones/detail2.html', {'form':form}, context_instance=RequestContext(request))
+	return render_to_response('devoluciones/detail2.html', {'form':form}, context_instance=RequestContext(request))
 
 def read(request):
 	latest_list = Devolucion.objects.all
-	return render_to_response('store/devoluciones/index.html',{'latest_list':latest_list}, context_instance=RequestContext(request))
+	return render_to_response('devoluciones/index.html',{'latest_list':latest_list}, context_instance=RequestContext(request))
 
 def update(request, id_devolucion):
 	devolucion = Devolucion.objects.get(id = id_devolucion)
@@ -43,5 +43,5 @@ def update(request, id_devolucion):
 			form.save()
 		return HttpResponseRedirect('/devoluciones/')
 	form = DevolucionForm(instance = devolucion)
-	return render_to_response('store/common/detail.html',{'form':form})
+	return render_to_response('devoluciones/detail2.html',{'form':form})
 

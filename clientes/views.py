@@ -15,4 +15,4 @@ def update(request, id_cliente = None):
 	#when NOT POST
 	else:
 		form = ClienteForm(instance = instance)
-	return render_to_response('store/common/detail.html',{'form':form})
+	return render_to_response('clientes/detail.html',{'form':form})

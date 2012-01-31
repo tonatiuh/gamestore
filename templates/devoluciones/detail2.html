@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{request.path}}{% endblock %}
+{% block content %}
+	<h1>{{request.path}}</h1>
+	<h2>¿Cuanto producto fue devuelto?</h2>
+
+	<form action="{{request.path}}" method="post" >
+		{% csrf_token %}
+		{{form.as_ul}}
+		<br>
+		<input style="float:right;" type="submit" value="Guardar">
+		<div class="cleared"></div>
+	</form>
+{% endblock %}

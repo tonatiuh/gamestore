@@ -8,7 +8,7 @@ urlpatterns = patterns('',
         ListView.as_view(
             queryset = Venta.objects.order_by('id'),
             context_object_name = 'latest_list', 
-            template_name = 'store/devoluciones/create.html')), #shows -ventas
+            template_name = 'devoluciones/create.html')), #shows -ventas
     url(r'^create/ventas/(?P<id_venta>\d+)/$', 'devoluciones.views.ventas_read'), #shows -ventasdetails
     url(r'^create/ventas/(?P<id_venta>\d+)/details/(?P<id_ventadetail>\d+)/$', 'devoluciones.views.create'), #create
 	url(r'^$', 'devoluciones.views.read'), #read

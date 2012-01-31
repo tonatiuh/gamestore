@@ -12,7 +12,7 @@ def create(request):
 		return HttpResponseRedirect('/ventas/')
 	else:
 		form = VentaForm()
-	return render_to_response('store/ventas/detail.html', {'form':form}, context_instance=RequestContext(request))
+	return render_to_response('ventas/detail.html', {'form':form}, context_instance=RequestContext(request))
 
 def update(request, id_venta = None):
 	venta = None
@@ -29,7 +29,7 @@ def update(request, id_venta = None):
 	#when NOT POST
 	else:
 		form = VentaForm(instance = venta)
-	return render_to_response('store/ventas/detail.html',{'form':form, 'latest_list':latest_list}, context_instance=RequestContext(request))
+	return render_to_response('ventas/detail.html',{'form':form, 'latest_list':latest_list, 'venta':venta}, context_instance=RequestContext(request))
 
 def details_create(request, id_venta):
 	#when POST
@@ -43,7 +43,7 @@ def details_create(request, id_venta):
 	#when NOT POST
 	else:
 		form = VentaDetailForm()
-	return render_to_response('store/common/detail.html', {'form':form}, context_instance=RequestContext(request))
+	return render_to_response('common/detail.html', {'form':form}, context_instance=RequestContext(request))
 
 def details_update(request, id_venta, id_ventadetail):
 	#when POST
@@ -59,4 +59,4 @@ def details_update(request, id_venta, id_ventadetail):
 	else:
 		ventadetail = VentaDetail.objects.get(id = id_ventadetail)
 		form = VentaDetailForm(instance = ventadetail)
-	return render_to_response('store/common/detail.html', {'form':form}, context_instance=RequestContext(request))
+	return render_to_response('common/detail.html', {'form':form}, context_instance=RequestContext(request))

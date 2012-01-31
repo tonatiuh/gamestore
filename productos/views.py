@@ -15,4 +15,4 @@ def update(request, id = None):
 	#when NOT POST
 	else:
 		form = ProductoForm(instance = instance)
-	return render_to_response('store/common/detail.html',{'form':form})
+	return render_to_response('common/detail.html',{'form':form})

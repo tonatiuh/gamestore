@@ -8,6 +8,14 @@ class Venta(models.Model):
 	fecha = models.DateTimeField(auto_now_add = True)
 	def __unicode__(self):
 		return '['+str(self.fecha.day)+'/'+str(self.fecha.month)+'/'+str(self.fecha.year)+']  '+self.cliente.nombre+' '+self.cliente.primer_apellido 
+	def total(self):
+		ventadetails = VentaDetail.objects.filter(venta__id__exact = self.id)
+		total = 0
+		for ventadetail in ventadetails:
+			total += ventadetail.cantidad * ventadetail.producto.precio
+		return total
+	def test():
+		return 2
 
 class VentaForm(ModelForm):
 	class Meta:
@@ -18,10 +26,13 @@ class VentaDetail(models.Model):
 	producto = models.ForeignKey(Producto)
 	cantidad = models.DecimalField(max_digits = 3, decimal_places = 0)
 	venta = models.ForeignKey(Venta)
-	def __unicode__(self):
-		return '['+str(self.cantidad)+'] '+self.producto.nombre
 	class Meta:
 		unique_together = (("producto", "venta"),)
+	def __unicode__(self):
+		return '['+str(self.cantidad)+'] '+self.producto.nombre
+	def total(self):
+		total = self.cantidad * self.producto.precio
+		return total
 
 class VentaDetailForm(ModelForm):
 	class Meta:

@@ -8,6 +8,6 @@ urlpatterns = patterns('',
         ListView.as_view(
             queryset = Cliente.objects.order_by('nombre'),
             context_object_name = 'latest_list', 
-            template_name = 'store/common/index.html')), #read
-    url(r'^(?P<id_cliente>\d+)/$', 'clientes.views.update'), #update
+            template_name = 'clientes/index.html')), #read
+    url(r'^update/(?P<id_cliente>\d+)/$', 'clientes.views.update'), #update
 )

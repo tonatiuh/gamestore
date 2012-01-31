@@ -7,7 +7,7 @@ class Cliente(models.Model):
 	segundo_apellido = models.CharField(max_length = 150)
 	telefono = models.CharField(max_length = 10)
 	def __unicode__(self):
-		return self.nombre
+		return self.nombre+' '+self.segundo_apellido
 
 class ClienteForm(ModelForm):
 	class Meta:

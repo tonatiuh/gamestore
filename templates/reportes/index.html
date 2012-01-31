@@ -1,0 +1,13 @@
+<h1>{{request.path}}</h1>
+Listado
+{% if latest_list %}
+	<ul>
+		{% for object in latest_list %}
+			<li><a href="/ventas/update/{{object.id}}">Venta:{{object.venta}} - Total:{{object.venta.total}}</a></li>
+		{% endfor %}
+		Total: {{reporte.total}}
+	</ul>
+{% else %}
+	<p>No hay {{request.path}} en la base de datos.</p>
+{% endif %}
+<input  type="button" value="Cerrar caja" onclick="location.href='{{request.path}}abrir'">

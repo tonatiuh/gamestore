@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ request.path }}{% endblock %}
+{% block content %}
+	<h1>{{request.path}}</h1>
+	{% if reporte %}
+		<ul>
+			{% for object in latest_list %}
+				<li><a href="/ventas/update/{{object.id}}">Venta:{{object.venta}} - Total:{{object.venta.total}}</a></li>
+			{% endfor %}
+			Total: {{reporte.total}}
+		</ul>
+		<input  type="button" value="Cerrar caja" onclick="location.href='{{request.path}}cerrar'">
+	{% else %}
+		<input  type="button" value="Abrir caja" onclick="location.href='{{request.path}}cerrar'">
+	{% endif %}
+{% endblock %}

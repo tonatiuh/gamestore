@@ -1,0 +1,147 @@
+/* TAGS */
+a{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+BODY{
+	background-color: #1baecf;
+	background: -moz-linear-gradient(top, #1AABCF , #FFF);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#D4D4CF),  to(#FFF));
+	font-family: 'Geneva','Tahoma', 'Verdana';
+	font-size:15px;
+	margin:0;
+}
+form{
+	border-top:1px solid #474747;
+	width:400px;
+	margin:0 auto;
+}
+form li{
+	list-style-type:none;
+	font-size:.9em;
+	text-align:center;
+	line-height: 2.5em;
+	border:1px solid #474747;
+	border-top:0;
+}
+h1{
+	background-color:#3D3D3F;
+	color: #1AABCF;
+	font-size:1.5em;
+	font-weight:normal;
+	letter-spacing:-1px;
+	padding: 2px 0;
+	line-height:1em;
+	margin-bottom:30px;
+	text-align:center;
+}
+h2{
+	color: #1AABCF;
+	font-size:1em;
+	font-weight:normal;
+	letter-spacing:-1px;
+	padding: 2px 0;
+	line-height:1em;
+	margin: 0 40px;
+	margin-bottom:10px;
+	text-align:center;
+}
+input[type=button], input[type=submit]{
+	background-color:#1AABCF;
+	border:1px solid white;
+	line-height:2em;
+	-webkit-border-radius: 0 0 2px 2px;
+	-moz-border-radius: 0 0 2px 2px;
+	border-radius: 0 0 2px 2px;
+}
+input[type=text]{
+	background:none;
+	color:white;
+	font-size:1em;
+	border:1px solid #474747;
+	margin-left:10px;
+}
+table{
+	border:1px solid white;
+	font-size: 1em;
+	color: white;
+	margin:0 auto;
+}
+textarea{
+	background:none;
+	color:white;
+	font-size:1em;
+	border:1px solid #474747;
+	margin-left:10px;
+	line-height:1em;
+	height:4em;
+}
+th,td{
+	border:0;
+	padding:0;
+	margin:0;
+}
+td{
+	background-color: #EDF3FE;
+	color: black;
+	padding:2px;
+}
+td a{
+	color:black;
+	width:100%;
+	display: block;
+}
+td a:hover{
+	color:#1AABCF;
+}
+th{
+	background:#3D3D3F;
+	color:#1AABCF;
+	font-weight:normal;
+	padding: 0 1em;
+	font-family: 'Geneva','Tahoma', 'Verdana';
+}
+
+/* LAYOUT */
+.bRadious1{
+	-webkit-border-radius: 0 0 2px 2px;
+	-moz-border-radius: 0 0 2px 2px;
+	border-radius: 0 0 2px 2px;
+}
+.bRadious2{
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.shadowed{
+	box-shadow: 2px 2px 10px #000;
+}
+
+/* HELPERS */
+.centeredOut{
+	margin: 0 auto;
+}
+.cleared{
+	clear: both;
+}
+
+/* COLORS */
+.bBlack{
+	background-color:black;
+}
+.bWhite{
+	background-color:white;
+}
+.cWhite{
+	color: white;
+}
+
+/* SPECIFICS */
+.list li{
+	line-height:2em;
+	border:2px solid white;
+	border-bottom:0;
+	list-style-type:none;
+}

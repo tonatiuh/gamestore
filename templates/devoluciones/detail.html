@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{request.path}}{% endblock %}
+{% block content %}
+	<h1>Devoluciones</h1>
+	<h2>Selecciona el producto al cual aplicar la devolución</h2>
+	{% if latest_list %}
+		<table>
+				<tr>
+					<td>Producto</td>
+					<td>Cantidad comprada</td>
+				</tr>
+			{% for object in latest_list %}
+				<tr>
+					<td><a href="{{request.path}}details/{{object.id}}">{{object.producto}}</a></td>
+					<td><a href="{{request.path}}details/{{object.id}}">{{object.cantidad}}</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>No hay {{request.path}} en la base de datos.</p>
+	{% endif %}
+{% endblock %}

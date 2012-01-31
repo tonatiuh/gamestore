@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{request.path}}{% endblock %}
+{% block content %}
+	<h1>{{request.path}}</h1>
+	<input style="float:right; margin-right:20px;"  type="button" value="Agregar" onclick="location.href='{{request.path}}create'">
+	<div class="cleared"></div>
+	{% if latest_list %}
+			<table>
+				<tr>
+					<th>Nombre</th>
+					<th>Primer apellido</th>
+					<th>Segundo apellido</th>
+					<th>Teléfono</th>
+				</tr>
+			{% for object in latest_list %}
+				<tr>
+					<td><a href="update/{{object.id}}">{{object.nombre}}</a></td>
+					<td><a href="update/{{object.id}}">{{object.primer_apellido}}</a></td>
+					<td><a href="update/{{object.id}}">{{object.segundo_apellido}}</a></td>
+					<td><a href="update/{{object.id}}">{{object.telefono}}</a></td>
+				</tr>
+			{% endfor %}
+			</table>
+	{% else %}
+		<p>No hay {{request.path}} en la base de datos.</p>
+	{% endif %}
+{% endblock %}
