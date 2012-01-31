@@ -1,7 +1,0 @@
-<h1>¿Cuanto producto fue devuelto?</h1>
-
-<form action="{{request.path}}" method="post" >
-	{% csrf_token %}
-	{{form.as_ul}}
-	<input type="submit" value="Guardar">
-</form>
