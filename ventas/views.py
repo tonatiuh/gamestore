@@ -1,4 +1,5 @@
 from ventas.models import Venta, VentaForm, VentaDetail, VentaDetailForm
+from reportes.models import Reporte, ReporteDetail
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
@@ -9,6 +10,10 @@ def create(request):
 		form = VentaForm(request.POST)
 		if form.is_valid():
 			form.save()
+			venta = Venta.objects.latest('id')
+			reporte = Reporte.objects.latest('id')
+			reportedetail = ReporteDetail(venta = venta, reporte = reporte)
+			reportedetail.save()
 		return HttpResponseRedirect('/ventas/')
 	else:
 		form = VentaForm()

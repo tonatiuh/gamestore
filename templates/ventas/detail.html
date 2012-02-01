@@ -6,7 +6,7 @@
 	<form action="{{request.path}}" method="post" >
 		{% csrf_token %}
 		{{form.as_ul}}
-		<input style="float:right; margin-top:10px;" type="submit" value="Guardar">
+		<input style="float:right; margin-top:10px;" type="submit" value="Guardar compra">
 		<div class="cleared"></div>
 	</form>
 
@@ -37,9 +37,9 @@
 				</tr>
 			</table>
 	{% else %}
-		<p>No hay {{request.path}} en la base de datos.</p>
+		<p style="text-align:center;" >No haz agregado ningún producto a esta compra.</p>
 	{% endif %}
 
-	<input style="float:right; margin-right:40px;"  type="button" value="Agregar" onclick="location.href='{{request.path}}details/create'">
+	<input style="float:right; margin-right:40px;"  type="button" value="Agregar producto" onclick="location.href='{{request.path}}details/create'">
 	<div class="cleared"></div>
 {% endblock %}

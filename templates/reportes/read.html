@@ -2,7 +2,7 @@
 
 {% block title %}{{ request.path }}{% endblock %}
 {% block content %}
-	<h1>Caja</h1>
+	<h1>Reporte</h1>
 	{% if reporte %}
 		<h2>Ventas hasta el momento</h2>
 		<table>
@@ -24,11 +24,6 @@
 				<td style="text-align:right">${{reporte.total}}</td>
 			</tr>
 		</table>
-		<input style="float:right; margin-right:30px;" type="button" value="Cerrar caja" onclick="location.href='{{request.path}}cerrar'">
-		<div class="cleared"></div>
 	{% else %}
-		<h2>Para comenzar a registrar las ventas abre la caja primero</h2>
-		<input style="float:right; margin-right:30px;" type="button" value="Abrir caja" onclick="location.href='{{request.path}}abrir'">
-		<div class="cleared"></div>
 	{% endif %}
 {% endblock %}

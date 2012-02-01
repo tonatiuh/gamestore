@@ -1,13 +1,25 @@
-<h1>{{request.path}}</h1>
-Listado
-{% if latest_list %}
-	<ul>
-		{% for object in latest_list %}
-			<li><a href="/ventas/update/{{object.id}}">Venta:{{object.venta}} - Total:{{object.venta.total}}</a></li>
-		{% endfor %}
-		Total: {{reporte.total}}
-	</ul>
-{% else %}
-	<p>No hay {{request.path}} en la base de datos.</p>
-{% endif %}
-<input  type="button" value="Cerrar caja" onclick="location.href='{{request.path}}abrir'">
+{% extends "base.html" %}
+
+{% block title %}Titulo{% endblock %}
+
+{% block content %}
+	<h1>{{request.path}}</h1>
+	{% if latest_list %}
+		<table>
+			<tr>
+				<th>Fecha de inicio</th>
+				<th>Fecha de término</th>
+				<th>Venta total</th>
+			</tr>
+			{% for object in latest_list %}
+				<tr>
+					<td><a href="read/{{object.id}}">{{object.fecha_start}}</a></td>
+					<td><a href="read/{{object.id}}">{{object.fecha_end}}</a></td>
+					<td><a href="read/{{object.id}}">${{object.total}}</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>No hay {{request.path}} en la base de datos.</p>
+	{% endif %}
+{% endblock %}

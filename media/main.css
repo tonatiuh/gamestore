@@ -7,8 +7,8 @@ a:hover{
 }
 BODY{
 	background-color: #1baecf;
-	background: -moz-linear-gradient(top, #1AABCF , #FFF);
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#D4D4CF),  to(#FFF));
+	background: -moz-linear-gradient(top, #1AABCF , #1AABCF);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#D4D4CF),  to(#1AABCF));
 	font-family: 'Geneva','Tahoma', 'Verdana';
 	font-size:15px;
 	margin:0;
