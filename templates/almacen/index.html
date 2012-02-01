@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Titulo{% endblock %}
+{% block content %}
+	<h1>{{request.path}}</h1>
+	<input style="float:right; margin-right:20px;"  type="button" value="Agregar" onclick="location.href='{{request.path}}create'">
+	<div class="cleared"></div>
+	<table>
+		<tr>
+			<th>Producto</th>
+			<th>Cantidad</th>
+		</tr>
+		{% for object in latest_list %}
+		<tr>
+			<td><a href="update/{{object.id}}">{{object.producto}}</a></td>
+			<td><a href="update/{{object.id}}">{{object.cantidad}}</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

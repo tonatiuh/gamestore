@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Clientes{% endblock %}
+{% block content %}
+	<h1>Producto en el almacen</h1>
+	<form action="{{request.path}}" method="post" >
+		{% csrf_token %}
+		{{form.as_ul}}
+		<br>
+		<input style="float:right; margin-right:20px;" type="submit" value="Guardar">
+		<div class="cleared"></div>
+	</form>
+{% endblock %}
