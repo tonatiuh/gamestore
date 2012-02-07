@@ -4,6 +4,16 @@
 {% block content %}
 	<h1>Reporte</h1>
 	{% if reporte %}
+		<h2>Saldo inicial</h2>
+		<table>
+			<tr>
+				<th>Saldo inicial</th>
+			</tr>
+			<tr>
+				<td>${{reporte.saldo_inicial}}</td>
+			</tr>
+		</table>
+		<br><br>
 		<h2>Ventas hasta el momento</h2>
 		<table>
 			<tr>
@@ -11,7 +21,7 @@
 				<th>Fecha</th>
 				<th>Total</th>
 			</tr>
-			{% for object in latest_list %}
+			{% for object in reportedetails %}
 				<tr>
 					<td><a href="/ventas/update/{{object.id}}">{{object.venta.cliente}}</a></td>
 					<td><a href="/ventas/update/{{object.id}}">{{object.venta.fecha}}</a></td>
@@ -19,10 +29,38 @@
 				</tr>
 			{% endfor %}
 			<tr>
-				<td></td>
-				<td></td>
+				<td> - </td>
+				<td> - </td>
 				<td style="text-align:right">${{reporte.total}}</td>
 			</tr>
+		</table>
+		<br><br>
+		<h2>Retiros hasta el momento</h2>
+		<table>
+			<tr>
+				<th>Fecha</th>
+				<th>Retiro</th>
+			</tr>
+			{% for object in retiros %}
+				<tr>
+					<td> {{object.fecha}} </td>
+					<td>${{object.cantidad}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<br><br>
+		<h2>Depósitos hasta el momento</h2>
+		<table>
+			<tr>
+				<th>Fecha</th>
+				<th>Depósito</th>
+			</tr>
+			{% for object in ingresos %}
+				<tr>
+					<td> {{object.fecha}} </td>
+					<td>${{object.cantidad}}</td>
+				</tr>
+			{% endfor %}
 		</table>
 	{% else %}
 	{% endif %}

@@ -13,9 +13,9 @@
 			</tr>
 			{% for object in latest_list %}
 				<tr>
-					<td><a href="/ventas/update/{{object.id}}">{{object.venta.cliente}}</a></td>
-					<td><a href="/ventas/update/{{object.id}}">{{object.venta.fecha}}</a></td>
-					<td><a href="/ventas/update/{{object.id}}">${{object.venta.total}}</a></td>
+					<td><a href="/ventas/update/{{object.venta.id}}">{{object.venta.cliente}}</a></td>
+					<td><a href="/ventas/update/{{object.venta.id}}">{{object.venta.fecha}}</a></td>
+					<td><a href="/ventas/update/{{object.venta.id}}">${{object.venta.total}}</a></td>
 				</tr>
 			{% endfor %}
 			<tr>

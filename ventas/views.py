@@ -1,8 +1,9 @@
 from ventas.models import Venta, VentaForm, VentaDetail, VentaDetailForm
+from almacen.models import Producto
 from reportes.models import Reporte, ReporteDetail
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 
 def create(request):
 	#when POST
@@ -43,6 +44,16 @@ def details_create(request, id_venta):
 		ventadetail = VentaDetail(venta = venta)
 		form = VentaDetailForm(request.POST, instance = ventadetail)
 		if form.is_valid():
+			ventadetail = form.save(commit = False)
+			productoalmacen = Producto.objects.filter(producto__id__exact = ventadetail.producto.id)
+			if not productoalmacen:
+				return HttpResponse('Este producto no esta en el almacen. Agregalo primero.')
+			productoalmacen = Producto.objects.get(id = productoalmacen[0].id)
+			if (ventadetail.cantidad <= productoalmacen.cantidad):
+				productoalmacen.cantidad -= ventadetail.cantidad
+				productoalmacen.save()
+			else:
+				return HttpResponse('No hay unidades suficientes en el almacen.')
 			form.save()
 		return HttpResponseRedirect('/ventas/update/'+id_venta)
 	#when NOT POST

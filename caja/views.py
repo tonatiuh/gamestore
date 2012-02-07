@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
-from django.http import HttpResponse, HttpResponseRedirect
 from reportes.models import Reporte, ReporteDetail
+from django.http import HttpResponse, HttpResponseRedirect
 import datetime
 
 def index(request):

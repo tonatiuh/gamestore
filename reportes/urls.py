@@ -9,4 +9,6 @@ urlpatterns = patterns('',
             context_object_name = 'latest_list', 
             template_name = 'reportes/index.html')), #read
     url(r'^read/(?P<reporte_id>\d+)/$', 'reportes.views.read'), #update
+    url(r'^retiro$', 'reportes.views.retiro'), #retiro
+    url(r'^ingreso$', 'reportes.views.ingreso'), #ingreso
 )

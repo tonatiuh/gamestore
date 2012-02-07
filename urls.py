@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^reportes/', include('reportes.urls')),
     url(r'^almacen/', include('almacen.urls')),
     url(r'^apartado/', include('apartado.urls')),
+    url(r'^cotizaciones/', include('cotizaciones.urls')),
 
     #url(r'^productos/add/$', 'store.views.producto_detail'),
 

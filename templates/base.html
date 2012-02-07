@@ -7,7 +7,7 @@
 	<div style="width:960px;" class="centeredOut">
 		<div style="height:2em; background-color:#19191A;" class="bRadious1 shadowed">
 			<style type="text/css">
-				#menu li{
+				#nav li{
 					float: right;
 					list-style-type: none;
 					border-left:1px solid #333;
@@ -16,26 +16,51 @@
 					line-height:2em;
 					text-transform:uppercase;
 				}
-				#menu li a{
+				#nav li a{
 					color: #1AABCF;
 				}
-				#menu li a:hover{
+				#nav li a:hover{
 					color: #1c7e94;
 					text-decoration:none;
 				}
 				.button{
 					
 				}
+
+				#nav, .nav, #nav .nav li { margin:0px; padding:0px; }
+				#nav li {display:inline; cursor:pointer; list-style:none; padding:0px 10px 0px 10px; position:relative;}
+				#nav li ul.first {left:-1px; top:100%;}
+
+				li, li a {color:#1AABCF; text-decoration:none;}
+				#nav .nav li { width:100%; text-indent:10px; line-height:30px; border-top:1px #333 solid; background:#19191A;}
+				#nav li a {display:block; width:inherit; height:inherit;}
+
+				ul.nav { display:none; }
+				#nav li:hover > a, #nav li:hover { color:#fff; background-color: #19191A; }
+				li:hover > .nav { display:block; position:absolute; width:200px; top:-2px; left:50%; z-index:1000; } 
+				li:hover { position:relative; z-index:2000; } 
+
 			</style>
-			<ul id="menu">
+			<ul id="nav">
 				<li><a class='button' href="/clientes">Clientes</a></li>
 				<li><a class='button' href="/productos">Productos</a></li>
 				<li><a class='button' href="/ventas">Ventas</a></li>
-				<li><a class='button' href="/devoluciones">Devoluciones</a></li>
-				<li><a class='button' href="/caja">Caja</a></li>
+				<li>
+					<a class='button' href="/caja">Caja</a>
+					<ul class='nav first' >
+						<li> <a href="/reportes/retiro">Retiro de efectivo</a> </li>
+						<li> <a href="/reportes/ingreso">Depósitos de efectivo</a> </li>
+					</ul>
+				</li>
 				<li><a class='button' href="/reportes">Reportes</a></li>
-				<li><a class='button' href="/almacen">Almacen</a></li>
-				<li><a class='button' href="/apartado">Apartado</a></li>
+				<li>
+					<a class='button' href="/almacen">Almacen</a>
+					<ul class="nav first" >
+						<li><a href="/devoluciones">Devoluciones</a></li>
+						<li><a class='button' href="/apartado">Apartado</a></li>
+					</ul>
+				</li>
+				<li><a class='button' href="/cotizaciones">Cotizaciones</a></li>
 				<div class="cleared"></div>
 			</ul>
 		</div>
