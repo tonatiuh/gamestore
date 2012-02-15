@@ -131,6 +131,9 @@ INSTALLED_APPS = (
     'almacen',
     'apartado',
     'cotizaciones',
+    'banco',
+    'proveedores',
+    'pedidos',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Titulo{% endblock %}
+{% block content %}
+	<h1>Titulo</h1>
+	<form action="{{request.path}}" method="post" >
+		{% csrf_token %}
+		{{form.as_ul}}
+		<br>
+		<input style="float:right; margin-right:20px;" type="submit" value="Guardar">
+		<div class="cleared"></div>
+	</form>
+
+	<br><br>
+
+	{% if latest_list %}
+			<table>
+				<tr>
+					<th>Articulo</th>
+					<th>Cantidad</th>
+					<th>Completado</th>
+				</tr>
+			{% for object in latest_list %}
+				<tr>
+					<td><a href="details/update/{{object.id}}">{{object.producto}}</a></td>
+					<td><a href="details/update/{{object.id}}">{{object.cantidad}}</a></td>
+					<td><a href="details/update/{{object.id}}">{{object.completado}}</a></td>
+				</tr>
+			{% endfor %}
+			</table>
+	{% else %}
+		<p style="text-align:center;" >No hay {{request.path}} en la base de datos.</p>
+	{% endif %}
+	<input style="float:right; margin-right:20px;"  type="button" value="Agregar" onclick="location.href='{{request.path}}details/create'">
+	<div class="cleared"></div>
+{% endblock %}
