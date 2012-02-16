@@ -14,7 +14,7 @@ def update(request, id = None):
 	else:
 		form = PedidoForm(instance = instance)
 	latest_list = PedidoDetail.objects.filter(pedido__id__exact = id)
-	return render_to_response('pedidos/step1.html',{'form':form, 'latest_list':latest_list})
+	return render_to_response('pedidos/detail.html',{'form':form, 'latest_list':latest_list})
 
 def detail_update(request, id_pedido, id = None):
 	instance = None
@@ -28,5 +28,5 @@ def detail_update(request, id_pedido, id = None):
 			form.save()
 			return HttpResponseRedirect('/pedidos/update/'+str(id_pedido))
 	else:
-		form = PedidoDetailForm(instance = instance)
+		form = PedidoDetailForm(pedido.proveedor.id, instance = instance)
 	return render_to_response('common/detail.html',{'form':form})

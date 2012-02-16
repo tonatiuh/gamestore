@@ -1,7 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
-from proveedores.models import Proveedor
-from productos.models import Producto
+from proveedores.models import Proveedor, Producto
 
 completado_choices = (
 	('No', 'No'),
@@ -23,6 +22,10 @@ class PedidoDetail(models.Model):
 	completado = models.CharField(max_length = 2, choices = completado_choices)
 
 class PedidoDetailForm(ModelForm):
+	def __init__(self, id_proveedor, *args, **kwargs):
+		super (PedidoDetailForm,self ).__init__(*args,**kwargs) # populates the post
+		self.fields['producto'].queryset = Producto.objects.filter(proveedor__id = id_proveedor)
+    
 	class Meta:
 		model = PedidoDetail
 		exclude = ('pedido',)
