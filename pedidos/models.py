@@ -23,7 +23,7 @@ class PedidoDetail(models.Model):
 
 class PedidoDetailForm(ModelForm):
 	def __init__(self, id_proveedor, *args, **kwargs):
-		super (PedidoDetailForm,self ).__init__(*args,**kwargs) # populates the post
+		super (PedidoDetailForm,self ).__init__(*args,**kwargs)
 		self.fields['producto'].queryset = Producto.objects.filter(proveedor__id = id_proveedor)
     
 	class Meta:

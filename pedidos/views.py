@@ -23,7 +23,7 @@ def detail_update(request, id_pedido, id = None):
 	if id is not None:
 		instance = PedidoDetail.objects.get(id = id)
 	if request.method == 'POST':
-		form = PedidoDetailForm(request.POST, instance = instance)
+		form = PedidoDetailForm(pedido.proveedor.id, request.POST, instance = instance)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect('/pedidos/update/'+str(id_pedido))
