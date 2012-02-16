@@ -36,6 +36,7 @@ h1{
 	line-height:1em;
 	margin-bottom:30px;
 	text-align:center;
+	text-transform: uppercase;
 }
 h2{
 	color: #1AABCF;
@@ -44,9 +45,9 @@ h2{
 	letter-spacing:-1px;
 	padding: 2px 0;
 	line-height:1em;
-	margin: 0 40px;
-	margin-bottom:10px;
+	margin:2em 0 1em 0;
 	text-align:center;
+	text-transform: uppercase;
 }
 input[type=button], input[type=submit]{
 	background-color:#1AABCF;

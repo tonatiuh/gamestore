@@ -10,6 +10,12 @@ completado_choices = (
 class Pedido(models.Model):
 	fecha = models.DateTimeField(auto_now_add = True)
 	proveedor  = models.ForeignKey(Proveedor)
+	def total(self):
+		pedidodetails = PedidoDetail.objects.filter(pedido__id = self.id)
+		total = 0
+		for pedidodetail in pedidodetails:
+			total += pedidodetail.cantidad * pedidodetail.producto.precio
+		return total
 
 class PedidoForm(ModelForm):
 	class Meta:

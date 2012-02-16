@@ -4,6 +4,7 @@ from pedidos.models import Pedido, PedidoForm, PedidoDetail, PedidoDetailForm
 
 def update(request, id = None):
 	instance = None
+	pedido = Pedido.objects.get(id = id)
 	if id is not None:
 		instance = Pedido.objects.get(id = id)
 	if request.method == 'POST':
@@ -14,7 +15,7 @@ def update(request, id = None):
 	else:
 		form = PedidoForm(instance = instance)
 	latest_list = PedidoDetail.objects.filter(pedido__id__exact = id)
-	return render_to_response('pedidos/detail.html',{'form':form, 'latest_list':latest_list})
+	return render_to_response('pedidos/detail.html',{'form':form, 'latest_list':latest_list, 'pedido':pedido})
 
 def detail_update(request, id_pedido, id = None):
 	instance = None
