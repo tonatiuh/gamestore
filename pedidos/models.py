@@ -39,12 +39,14 @@ class PedidoDetail(models.Model):
 	def total(self):
 		total = self.producto.precio * self.cantidad
 		return total
+	def __unicode__(self):
+		return str(self.cantidad)+' '+str(self.producto.producto.nombre)
 
 class PedidoDetailForm(ModelForm):
 	def __init__(self, id_proveedor = None, *args, **kwargs):
 		super (PedidoDetailForm,self ).__init__(*args,**kwargs)
 		self.fields['producto'].queryset = Producto.objects.filter(proveedor__id = id_proveedor)
-    
+
 	class Meta:
 		model = PedidoDetail
 		exclude = ('pedido',)
