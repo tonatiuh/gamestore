@@ -13,4 +13,7 @@ urlpatterns = patterns('',
 
     url(r'^update/(?P<id_pedido>\d+)/details/create$', 'pedidos.views.detail_update'), #details/create
     url(r'^update/(?P<id_pedido>\d+)/details/update/(?P<id>\d+)$', 'pedidos.views.detail_update'), #details/update
+
+    url(r'^update/(?P<id_pedido>\d+)/anticipos/create$', 'pedidos.views.anticipo_update'), #anticipos/create
+    url(r'^update/(?P<id_pedido>\d+)/anticipos/update/(?P<id>\d+)$', 'pedidos.views.anticipo_update'), #details/update
 )

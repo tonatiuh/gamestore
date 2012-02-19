@@ -12,27 +12,30 @@
 	</form>
 
 	<h2>Productos en este pedido</h2>
-	{% if latest_list %}
+	{% if pedidos %}
 			<table>
 				<tr>
 					<th>Articulo</th>
 					<th>Cantidad</th>
 					<th>Completado</th>
-					<th>Precio</th>
+					<th>Precio Unitario</th>
+					<th>Precio Total</th>
 				</tr>
-			{% for object in latest_list %}
+			{% for object in pedidos %}
 				<tr>
 					<td><a href="details/update/{{object.id}}">{{object.producto}}</a></td>
 					<td><a href="details/update/{{object.id}}">{{object.cantidad}}</a></td>
 					<td><a href="details/update/{{object.id}}">{{object.completado}}</a></td>
 					<td><a href="details/update/{{object.id}}">${{object.producto.precio}}</a></td>
+					<td><a href="details/update/{{object.id}}">${{object.total}}</a></td>
 				</tr>
 			{% endfor %}
 				<tr>
 					<td></td>
 					<td></td>
 					<td></td>
-					<td>${{pedido.total}}</td>
+					<td></td>
+					<td style="text-align:right;" >${{pedido.total}}</td>
 				</tr>
 			</table>
 	{% else %}
@@ -41,5 +44,29 @@
 	<input style="float:right; margin-right:20px;"  type="button" value="Agregar" onclick="location.href='{{request.path}}details/create'">
 	<div class="cleared"></div>
 
-	<h2>Anticipos</h2>
+	<h2>Anticipos hechos</h2>
+	{% if anticipos %}
+			<table>
+				<tr>
+					<th>Fecha</th>
+					<th>Cantidad</th>
+				</tr>
+			{% for object in anticipos %}
+				<tr>
+					<td><a href="anticipos/update/{{object.id}}">{{object.fecha}}</a></td>
+					<td><a href="anticipos/update/{{object.id}}">${{object.cantidad}}</a></td>
+				</tr>
+			{% endfor %}
+				<tr>
+					<td></td>
+					<td style="text-align:right;">${{pedido.anticipo}}</td>
+				</tr>
+			</table>
+			**Restan por pagar: ${{pedido.restante}}
+	{% else %}
+		<p style="text-align:center;" >No hay {{request.path}} en la base de datos.</p>
+	{% endif %}
+	<input style="float:right; margin-right:20px;"  type="button" value="Agregar" onclick="location.href='{{request.path}}anticipos/create'">
+	<div class="cleared"></div>
+
 {% endblock %}
