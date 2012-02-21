@@ -13,7 +13,7 @@ class Venta(models.Model):
 		ventadetails = VentaDetail.objects.filter(venta__id__exact = self.id)
 		total = 0
 		for ventadetail in ventadetails:
-			total += ventadetail.cantidad * ventadetail.producto.producto.precio
+			total += ventadetail.total()
 		return total
 	def test():
 		return 2
@@ -27,11 +27,14 @@ class VentaDetail(models.Model):
 	producto = models.ForeignKey(Producto)
 	cantidad = models.DecimalField(max_digits = 3, decimal_places = 0)
 	venta = models.ForeignKey(Venta)
-	descuento = models.ForeignKey(Descuento)
+	descuento = models.ForeignKey(Descuento, blank=True, null=True)
 	def __unicode__(self):
 		return '['+str(self.cantidad)+'] '+self.producto.producto.nombre
 	def total(self):
 		total = self.cantidad * self.producto.producto.precio
+		if self.descuento:
+			descuento = (self.descuento.porcentaje*total)/100
+			total -= descuento
 		return total
 
 class VentaDetailForm(ModelForm):
