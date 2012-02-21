@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     url(r'^proveedores/', include('proveedores.urls')),
     url(r'^pedidos/', include('pedidos.urls')),
     url(r'^pdevoluciones/', include('pdevoluciones.urls')),
+    url(r'^descuentos/', include('descuentos.urls')),
 
     #url(r'^productos/add/$', 'store.views.producto_detail'),
 

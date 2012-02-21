@@ -45,10 +45,7 @@ def details_create(request, id_venta):
 		form = VentaDetailForm(request.POST, instance = ventadetail)
 		if form.is_valid():
 			ventadetail = form.save(commit = False)
-			productoalmacen = Producto.objects.filter(producto__id__exact = ventadetail.producto.id)
-			if not productoalmacen:
-				return HttpResponse('Este producto no esta en el almacen. Agregalo primero.')
-			productoalmacen = Producto.objects.get(id = productoalmacen[0].id)
+			productoalmacen = Producto.objects.get(id = ventadetail.producto.id)
 			if (ventadetail.cantidad <= productoalmacen.cantidad):
 				productoalmacen.cantidad -= ventadetail.cantidad
 				productoalmacen.save()

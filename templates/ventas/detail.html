@@ -25,7 +25,7 @@
 				<tr>
 					<td><a href="{{request.path}}details/update/{{object.id}}">{{object.producto}}</a></td>
 					<td><a href="{{request.path}}details/update/{{object.id}}">{{object.cantidad}}</a></td>
-					<td><a href="{{request.path}}details/update/{{object.id}}">${{object.producto.precio}}</a></td>
+					<td><a href="{{request.path}}details/update/{{object.id}}">${{object.producto.producto.precio}}</a></td>
 					<td><a href="{{request.path}}details/update/{{object.id}}">${{object.total}}</a></td>
 				</tr>
 			{% endfor %}
