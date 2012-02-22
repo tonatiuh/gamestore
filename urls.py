@@ -34,7 +34,10 @@ urlpatterns = patterns('',
     url(r'^pedidos/', include('pedidos.urls')),
     url(r'^pdevoluciones/', include('pdevoluciones.urls')),
     url(r'^descuentos/', include('descuentos.urls')),
+    url(r'^usuarios/', include('usuarios.urls')),
 
+    url(r'^guardian/', include('guardian.urls')),
+    url(r'^$', 'guardian.views.login'), #guardian - read
     #url(r'^productos/add/$', 'store.views.producto_detail'),
 
 )

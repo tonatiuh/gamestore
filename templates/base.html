@@ -45,15 +45,22 @@
 			<ul id="nav">
 				<li><a class='button' href="/clientes">Clientes</a></li>
 				<li><a class='button' href="/productos">Productos</a></li>
-				<li><a class='button' href="/ventas">Ventas</a></li>
+				<li>
+					<a class='button' href="/ventas">Ventas</a>
+					<ul class="nav first">
+						<li><a class='button' href="/cotizaciones">Cotizaciones</a></li>
+						<li><a class='button' href="/descuentos">Descuentos</a></li>
+					</ul>
+				</li>
 				<li>
 					<a class='button' href="/caja">Caja</a>
 					<ul class='nav first' >
 						<li> <a href="/reportes/retiro">Retiro de efectivo</a> </li>
 						<li> <a href="/reportes/ingreso">Depósitos de efectivo</a> </li>
+						<li><a class='button' href="/reportes">Reportes</a></li>
 					</ul>
 				</li>
-				<li><a class='button' href="/reportes">Reportes</a></li>
+				<li></li>
 				<li>
 					<a class='button' href="/almacen">Almacen</a>
 					<ul class="nav first" >
@@ -61,7 +68,6 @@
 						<li><a class='button' href="/apartado">Apartado</a></li>
 					</ul>
 				</li>
-				<li><a class='button' href="/cotizaciones">Cotizaciones</a></li>
 				<li><a class='button' href="/banco">Cuenta bancaria</a></li>
 				<li>
 					<a class='button' href="/proveedores">Proveedores</a>
@@ -70,12 +76,23 @@
 						<li><a href="/pdevoluciones">Devoluciones</a></li>
 					</ul>
 				</li>
-				<li><a class='button' href="/descuentos">Descuentos</a></li>
+				<li><a style="color:white; float:right;" class='button' href="/guardian/salir">Salir</a></li>
 				<div class="cleared"></div>
-			</ul>
 		</div>
 		<div id="content" style="margin:2em 0; background-color:#19191A; border:3px solid #C0C0C8; color:white; padding-bottom:30px;" class=" bRadious2 shadowed"  >
-	        {% block content %}{% endblock %}
+			{% if request.session.user_id %}
+				{% block content %}{% endblock %}
+			{% else %}
+				<h1>GAMESTORE</h1>
+				<h2>Idenfícate</h2>
+				<form action="{{request.path}}" method="post" >
+					{% csrf_token %}
+					{{form.as_ul}}
+					<br>
+					<input style="float:right; margin-right:20px;" type="submit" value="Entrar">
+					<div class="cleared"></div>
+				</form>
+			{% endif %}
 	    </div>
     </div>
 </body>

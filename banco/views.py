@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from banco.models import Movimiento, MovimientoForm
+from django.template import RequestContext
 
 def read(request):
 	latest_list = Movimiento.objects.order_by('id')
@@ -10,7 +11,7 @@ def read(request):
 			total += movimiento.cantidad
 		else:
 			total -= movimiento.cantidad
-	return render_to_response('banco/index.html',{'latest_list':latest_list, 'total':total})
+	return render_to_response('banco/index.html',{'latest_list':latest_list, 'total':total}, context_instance = RequestContext(request))
 
 def update(request, id = None):
 	instance = None

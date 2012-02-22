@@ -1,0 +1,7 @@
+<form action="{{request.path}}" method="post" >
+	{% csrf_token %}
+	{{form.as_ul}}
+	<br>
+	<input style="float:right; margin-right:20px;" type="submit" value="Guardar">
+	<div class="cleared"></div>
+</form>

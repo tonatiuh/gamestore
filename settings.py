@@ -136,6 +136,9 @@ INSTALLED_APPS = (
     'pedidos',
     'pdevoluciones', #-devoluciones of - proveedores
     'descuentos',
+    'guardian', #guards the access to the app sections
+    'usuarios',
+
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
