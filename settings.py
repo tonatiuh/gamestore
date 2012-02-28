@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'descuentos',
     'guardian', #guards the access to the app sections
     'usuarios',
+    'historiador', #registers all the moviments maded in other applications
 
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',

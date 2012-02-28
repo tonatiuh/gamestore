@@ -76,6 +76,7 @@
 						<li><a href="/pdevoluciones">Devoluciones</a></li>
 					</ul>
 				</li>
+				<li><a class='button' href="/historiador">Historial</a></li>
 				<li><a style="color:white; float:right;" class='button' href="/guardian/salir">Salir</a></li>
 				<div class="cleared"></div>
 		</div>
@@ -83,15 +84,20 @@
 			{% if request.session.user_id %}
 				{% block content %}{% endblock %}
 			{% else %}
-				<h1>GAMESTORE</h1>
-				<h2>Idenfícate</h2>
-				<form action="{{request.path}}" method="post" >
-					{% csrf_token %}
-					{{form.as_ul}}
-					<br>
-					<input style="float:right; margin-right:20px;" type="submit" value="Entrar">
-					<div class="cleared"></div>
-				</form>
+				{% if login_attempt %}
+					<h1>GAMESTORE</h1>
+					<h2>Idenfícate</h2>
+					<form action="{{request.path}}" method="post" >
+						{% csrf_token %}
+						{{form.as_ul}}
+						<br>
+						<input style="float:right; margin-right:20px;" type="submit" value="Entrar">
+						<div class="cleared"></div>
+					</form>
+				{% else %}
+					<br><br>
+					<div style='text-align:center'>Haz login <a href="/">aquí</a></div>
+				{% endif %}
 			{% endif %}
 	    </div>
     </div>

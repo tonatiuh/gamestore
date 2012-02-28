@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Titulo{% endblock %}
+{% block content %}
+	<h1>{{request.path}}</h1>
+	{% if object_list %}
+			<table>
+				<tr>
+					<th>Producto</th>
+				</tr>
+			{% for object in object_list %}
+				<tr>
+					<td><a href="productos/read/{{object.producto__id}}/details/create">{{object.producto__nombre}}</a></td>
+				</tr>
+			{% endfor %}
+			</table>
+	{% else %}
+		<p style="text-align:center;" >No hay {{request.path}} en la base de datos.</p>
+	{% endif %}
+{% endblock %}

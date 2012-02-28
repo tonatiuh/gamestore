@@ -23,7 +23,8 @@ def login(request, id = None):
 				return HttpResponse('Usuario no registrado.')
 	else:
 		form = UsuarioForm()
-	return render_to_response('guardian/index.html',{'form':form}, context_instance = RequestContext(request))
+	login_attempt = True
+	return render_to_response('guardian/index.html',{'form':form, 'login_attempt':login_attempt}, context_instance = RequestContext(request))
 
 def logout(request):
 	del request.session['user_id']

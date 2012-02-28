@@ -1,4 +1,4 @@
-from almacen.models import Producto
+from almacen.models import Almacenado
 from clientes.models import Cliente
 from descuentos.models import Descuento
 from django.forms import ModelForm
@@ -24,14 +24,13 @@ class VentaForm(ModelForm):
 
 class VentaDetail(models.Model):
 	id = models.AutoField(primary_key=True)
-	producto = models.ForeignKey(Producto)
-	cantidad = models.DecimalField(max_digits = 3, decimal_places = 0)
+	almacenado = models.ForeignKey(Almacenado)
 	venta = models.ForeignKey(Venta)
 	descuento = models.ForeignKey(Descuento, blank=True, null=True)
 	def __unicode__(self):
-		return '['+str(self.cantidad)+'] '+self.producto.producto.nombre
+		return '['+str(self.cantidad)+'] '+self.almacenado.producto.nombre
 	def total(self):
-		total = self.cantidad * self.producto.producto.precio
+		total = self.almacenado.producto.precio
 		if self.descuento:
 			descuento = (self.descuento.porcentaje*total)/100
 			total -= descuento
@@ -41,3 +40,6 @@ class VentaDetailForm(ModelForm):
 	class Meta:
 		model = VentaDetail
 		exclude = ('venta',)
+	def __init__(self, id_producto, *args, **kwargs):
+		super (VentaDetailForm,self ).__init__(*args,**kwargs)
+		self.fields['almacenado'].queryset = Almacenado.objects.filter(producto__id = id_producto)

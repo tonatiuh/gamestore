@@ -1,4 +1,4 @@
-from almacen.models import Producto
+from almacen.models import Almacenado
 from django.contrib import admin
 
-admin.site.register(Producto)
+admin.site.register(Almacenado)

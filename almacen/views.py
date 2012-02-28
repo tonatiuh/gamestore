@@ -1,28 +1,33 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-from almacen.models import Producto, ProductoForm
+from almacen.models import Almacenado, AlmacenadoForm
+from django.views.generic.list_detail import object_list
 
 def create(request):
 	#when POST
 	if request.method == 'POST':
-		form = ProductoForm(request.POST)
+		form = AlmacenadoForm(request.POST)
 		if form.is_valid():
 			form.save()
 		return HttpResponseRedirect('/almacen/')
 	else:
-		form = ProductoForm()
+		form = AlmacenadoForm()
 	return render_to_response('almacen/detail.html', {'form':form}, context_instance=RequestContext(request))
 
-def update(request, almacendetail_id):
-	producto = Producto.objects.get(id = almacendetail_id)
-	#when POST
+def update(request, id, id_producto = None):
+	instance = None
+	if id is not None:
+		instance = Almacenado.objects.get(id = id)
 	if request.method == 'POST':
-		form = ProductoForm(request.POST, instance = producto)
+		form = AlmacenadoForm(request.POST, instance = instance)
 		if form.is_valid():
 			form.save()
-		return HttpResponseRedirect('/almacen/')
-	#when NOT POST
+			return HttpResponseRedirect('/almacen')
 	else:
-		form = ProductoForm(instance = producto)
-	return render_to_response('almacen/detail.html',{'form':form})
+		form = AlmacenadoForm(instance = instance)
+	return render_to_response('common/detail.html',{'form':form}, context_instance = RequestContext(request))
+
+def productos_read(request, id):
+	queryset = Almacenado.objects.filter(producto__id = id)
+	return object_list(request, queryset = queryset, template_name = 'almacen/productos_read.html')

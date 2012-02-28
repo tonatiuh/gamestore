@@ -1,6 +1,7 @@
 from productos.models import Producto, ProductoForm
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
+from django.template import RequestContext
 
 def update(request, id = None):
 	instance = None
@@ -15,4 +16,4 @@ def update(request, id = None):
 	#when NOT POST
 	else:
 		form = ProductoForm(instance = instance)
-	return render_to_response('common/detail.html',{'form':form})
+	return render_to_response('common/detail.html',{'form':form}, context_instance = RequestContext(request))

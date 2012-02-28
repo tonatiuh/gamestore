@@ -12,8 +12,8 @@
 		</tr>
 		{% for object in latest_list %}
 		<tr>
-			<td><a href="update/{{object.id}}">{{object.producto}}</a></td>
-			<td><a href="update/{{object.id}}">{{object.cantidad}}</a></td>
+			<td><a href="read/productos/{{object.producto__id}}">{{object.producto__nombre}}</a></td>
+			<td><a href="read/productos/{{object.producto__id}}">{{object.total}}</a></td>
 		</tr>
 		{% endfor %}
 	</table>

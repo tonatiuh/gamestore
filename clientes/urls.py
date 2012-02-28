@@ -9,5 +9,5 @@ urlpatterns = patterns('',
             queryset = Cliente.objects.order_by('nombre'),
             context_object_name = 'latest_list', 
             template_name = 'clientes/index.html')), #read
-    url(r'^update/(?P<id_cliente>\d+)/$', 'clientes.views.update'), #update
+    url(r'^update/(?P<id>\d+)/$', 'clientes.views.update'), #update
 )
