@@ -38,6 +38,7 @@ urlpatterns = patterns('',
     url(r'^$', 'guardian.views.login'), #guardian - read
     url(r'^usuarios/', include('usuarios.urls')),
     url(r'^historiador/', include('historiador.urls')),
+    url(r'^taller/', include('taller.urls')),
 
     #url(r'^productos/add/$', 'store.views.producto_detail'),
 

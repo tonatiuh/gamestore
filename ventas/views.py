@@ -17,6 +17,10 @@ def update(request, id = None):
 		form = VentaForm(request.POST, instance = instance)
 		if form.is_valid():
 			form.save()
+			venta = Venta.objects.latest('id')
+			reporte = Reporte.objects.latest('id')
+			reportedetail = ReporteDetail(venta = venta, reporte = reporte)
+			reportedetail.save()
 			return HttpResponseRedirect('/ventas')
 	else:
 		form = VentaForm(instance = instance)

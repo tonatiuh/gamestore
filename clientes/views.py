@@ -2,6 +2,7 @@ from clientes.models import Cliente, ClienteForm
 from historiador.models import Registro
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
+from django.template import RequestContext
 
 def update(request, id = None):
 	instance = None
@@ -21,4 +22,4 @@ def update(request, id = None):
 	#when NOT POST
 	else:
 		form = ClienteForm(instance = instance)
-	return render_to_response('clientes/detail.html',{'form':form})
+	return render_to_response('clientes/detail.html',{'form':form}, context_instance = RequestContext(request))

@@ -10,7 +10,7 @@ def index(request):
 		reportedetails = ReporteDetail.objects.filter(reporte__id__exact = reporte.id)
 		return render_to_response('caja/index.html', {'latest_list': reportedetails, 'reporte': reporte}, context_instance=RequestContext(request))
 	else:
-		return render_to_response('caja/index.html')
+		return render_to_response('caja/index.html', {}, context_instance = RequestContext(request))
 
 def abrir(request):
 	reporte = Reporte(fecha_start = datetime.datetime.now())

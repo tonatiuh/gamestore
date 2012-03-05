@@ -7,7 +7,7 @@ def read(request):
 	latest_list = Movimiento.objects.order_by('id')
 	total = 0
 	for movimiento in latest_list:
-		if movimiento.clasificacion.id == 1:
+		if movimiento.clasificacion == '2':
 			total += movimiento.cantidad
 		else:
 			total -= movimiento.cantidad
@@ -24,4 +24,4 @@ def update(request, id = None):
 			return HttpResponseRedirect('/banco')
 	else:
 		form = MovimientoForm(instance = instance)
-	return render_to_response('common/detail.html',{'form':form})
+	return render_to_response('common/detail.html',{'form':form}, context_instance = RequestContext(request))

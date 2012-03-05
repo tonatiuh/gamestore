@@ -3,20 +3,18 @@
 {% block title %}Titulo{% endblock %}
 {% block content %}
 	<h1>{{request.path}}</h1>
+	<input style="float:right; margin-right:20px;"  type="button" value="Agregar" onclick="location.href='{{request.path}}create'">
+	<div class="cleared"></div>
 	{% if latest_list %}
 			<table>
 				<tr>
-					<th>Fecha</th>
-					<th>Sección</th>
-					<th>Acción</th>
-					<th>Usuario</th>
+					<th></th>
+					<th></th>
 				</tr>
 			{% for object in latest_list %}
 				<tr>
-					<td><a href="update/{{object.id}}">{{object.fecha}}</a></td>
-					<td><a href="update/{{object.id}}">{{object.seccion}}</a></td>
-					<td><a href="update/{{object.id}}">{{object.accion}}</a></td>
-					<td><a href="update/{{object.id}}">{{object.real_usuario}}</a></td>
+					<td><a href="update/{{object.id}}">{{object}}</a></td>
+					<td><a href="update/{{object.id}}">{{object}}</a></td>
 				</tr>
 			{% endfor %}
 			</table>
