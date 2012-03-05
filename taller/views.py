@@ -1,14 +1,26 @@
-# Create your views here.
+from taller.models import Reparacion, ReparacionForm
+from django.views.generic.create_update import create_object, update_object, delete_object
 
-def update(request, id = None):
-	instance = None
-	if id is not None:
-		instance = Reparacion.objects.get(id = id)
-	if request.method == 'POST':
-		form = ReparacionForm(request.POST, instance = instance)
-		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect('/taller')
-	else:
-		form = ReparacionForm(instance = instance)
-	return render_to_response('common/detail.html',{'form':form})
+def create(request):
+	return create_object(request,
+        form_class=ReparacionForm,
+        template_name='common/detail.html',
+        post_save_redirect="/taller"
+    )
+
+def update(request, id):
+	return update_object(request,
+        form_class=ReparacionForm,
+        object_id=id,
+        template_name='common/detail.html',
+        post_save_redirect="/taller"
+    )      
+
+def delete(request, id):
+	return delete_object(request,
+        model=Reparacion,
+        object_id=id,
+        template_name='common/delete.html',
+        template_object_name='object',
+        post_delete_redirect="/taller"
+    )    
